@@ -1,0 +1,34 @@
+#%RAML 1.0 DataType
+
+type: object
+properties:
+  memberId:
+    description: This will contain member Id of customer.
+    type: string
+    required: true
+    example: "Mem34576345"
+  transactionId:
+    description: This will contain transaction Id of customer.
+    type: string
+    required: true
+    example: "TXN72y483"      
+  amount:
+    description: This will contain amount of transaction.
+    type: integer
+    required: true
+    example: 10000       
+  memberTier:
+    description: This will contain member Id of customer.
+    type: string
+    required: true
+    enum:
+      - T1
+      - T2
+      - T3
+      - T4
+    example: "T1" 
+  transactionDate:
+    description: This will contain member Id of customer.
+    type: string
+    required: true
+    example: "04-04-2021"

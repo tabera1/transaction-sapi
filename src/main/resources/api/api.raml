@@ -1,0 +1,52 @@
+#%RAML 1.0
+title: transaction-sapi-raml
+description: This System API will insert transaction Data in SFDC system 
+version: 1.0.2
+
+traits:
+  business : !include ../exchange_modules/615720d0-301f-464c-b8d3-f2fa933a79cd/common-fragment/1.0.0/trait/business-traits.raml
+  clientIdSecret : !include ../exchange_modules/615720d0-301f-464c-b8d3-f2fa933a79cd/common-fragment/1.0.0/trait/clientIdSecret-traits.raml
+  transaction : !include ../exchange_modules/615720d0-301f-464c-b8d3-f2fa933a79cd/common-fragment/1.0.0/trait/transactionId-trait.raml
+
+types:
+  errorDataType : !include ../exchange_modules/615720d0-301f-464c-b8d3-f2fa933a79cd/common-fragment/1.0.0/DataType/error-response-dataType.raml
+  postTransactionRequest : !include /dataType/post-transaction-request-dataType.raml
+  postTransactionResponse : !include /dataType/post-transaction-response-dataType.raml
+/members:
+  /transactions:
+    post:
+      is:
+        - business
+        - clientIdSecret
+        - transaction
+      body:
+          application/json:
+              type: postTransactionRequest
+              example: !include /examples/transaction/post-transaction-request-example.json
+      responses:
+        201:
+          body:
+            application/json:
+              type: postTransactionResponse
+              example: !include /examples/transaction/post-transaction-response-example.json
+        400:
+          body:
+            application/json:
+              type: errorDataType
+              example: !include /examples/common/error-400-example.json
+        401:
+          body:
+            application/json:
+              type: errorDataType                   
+              example: !include /examples/common/error-401-example.json
+        404:
+          body:
+            application/json:
+              type: errorDataType
+              example: !include  /examples/common/error-404-example.json
+        500:
+          body:
+            application/json:
+              type: errorDataType
+              example: !include /examples/common/error-500-example.json
+                                         

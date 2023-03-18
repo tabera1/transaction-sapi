@@ -1,0 +1,38 @@
+#%RAML 1.0 DataType
+
+type: object
+properties:
+  msg:
+    description: This field will contain response message.
+    type: string
+    required: true
+    example: "successful operation"
+  code:
+    description: This field will contain response code.
+    type: integer
+    required: true
+    example: 201
+  success:
+    description: This field will contain response success status.
+    type: boolean
+    required: true
+    example: true
+  eventId:
+    description: This field will contain transaction unique ID.
+    type: string
+    required: true
+    example: "successful operation"
+  data:
+    description: This object will contain response data.
+    type: object
+    properties:
+      memberId:
+        description: This field will contain memberId.
+        type: string
+        required: true
+        example: "Mem101"
+      status:
+        description: This field will contain status.
+        type: string
+        required: true
+        example: "Success"                    
